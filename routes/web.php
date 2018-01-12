@@ -21,7 +21,7 @@ Route::get('/{objectType}{objectId}', function (string $objectType, int $objectI
     $data = \App\Models\Document::findOrFail($objectId)->toArray();
     $data['content'] = $parsedown->text($data['content']);
     $content = view('default.document', $data);
-    $memKey = $objectType . $objectId;
+    $memKey = '/' . $objectType . $objectId;
     (new Memcached())->add($memKey, (string)$content);
     header('Content-Source: origin');
     return $content;
