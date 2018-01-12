@@ -20,7 +20,11 @@ Route::get('/', function () {
 Route::get('/{objectType}{objectId}', function (string $objectType, int $objectId, \Parsedown $parsedown) {
     $data = \App\Models\Document::findOrFail($objectId)->toArray();
     $data['content'] = $parsedown->text($data['content']);
-    return view('default.document', $data);
+    $content = view('default.document', $data);
+    $memKey = $objectType . $objectId;
+    (new Memcached())->add($memKey, (string)$content);
+    header('Content-Source: origin');
+    return $content;
 })->where([
     'objectType' => '[\w]+',
     'objectId' => '[\d]+',
