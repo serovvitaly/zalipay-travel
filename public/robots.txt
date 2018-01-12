@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+Host: http://travel.zalipay.com
+sitemap: http://travel.zalipay.com/sitemap.xml
