@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('default.index', [
+        'items' => \App\Models\Document::where('is_active', 1)->paginate(10),
+    ]);
 });
+
+Route::get('/{objectType}{objectId}', function (string $objectType, int $objectId, \Parsedown $parsedown) {
+    $data = \App\Models\Document::findOrFail($objectId)->toArray();
+    $data['content'] = $parsedown->text($data['content']);
+    return view('default.document', $data);
+})->where([
+    'objectType' => '[\w]+',
+    'objectId' => '[\d]+',
+]);
