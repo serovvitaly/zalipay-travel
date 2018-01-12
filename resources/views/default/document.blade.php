@@ -1,6 +1,6 @@
 @extends('default.layout')
 
-@section('title', $seo_title)
+@section('title', $title)
 @section('meta_title', $seo_title)
 @section('meta_description', $seo_description)
 
