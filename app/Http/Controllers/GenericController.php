@@ -3,35 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Services\Area\AreaDtoService;
-use App\Services\GenericService;
 
 class GenericController extends Controller
 {
     /**
      * @param $objectType
      * @param $objectId
-     * @param GenericService $genericService
      * @return mixed
      * @throws \Exception
      */
-    public function satisfyDocument(string $objectType, int $objectId, GenericService $genericService)
+    public function satisfyDocument(string $objectType, int $objectId)
     {
-        return $genericService
-            ->serviceFactory($objectType)
-            ->satisfy($objectType, $objectId);
+        return (new \App\Services\GenericDocumentService)->satisfy($objectType, $objectId);
     }
 
     /**
      * @param $areaAlias
      * @param string $contentModule
-     * @param GenericService $genericService
      * @return mixed
      * @throws \Exception
      */
-    public function satisfyArea(string $areaAlias, string $contentModule = AreaDtoService::ALIAS, GenericService $genericService)
+    public function satisfyArea(string $areaAlias, string $contentModule = AreaDtoService::ALIAS)
     {
-        return $genericService
-            ->serviceFactory($contentModule)
-            ->satisfy($contentModule, $areaAlias);
+        return (new \App\Services\Area\AreaDtoService)->satisfy($contentModule, $areaAlias);
     }
 }

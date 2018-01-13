@@ -5,7 +5,7 @@ namespace App\Services\Area;
 
 class AreaDtoService implements \App\Services\GenericServiceInterface
 {
-    const ALIAS = 'areaIndex';
+    const ALIAS = 'index';
 
     /**
      * @param string $areaName
@@ -17,6 +17,18 @@ class AreaDtoService implements \App\Services\GenericServiceInterface
     {
         switch ($moduleName) {
             case self::ALIAS:
+                return $this->getIndexModuleDto($areaName);
+                break;
+            case 'weather':
+                return $this->getIndexModuleDto($areaName);
+                break;
+            case 'places':
+                return $this->getIndexModuleDto($areaName);
+                break;
+            case 'activity':
+                return $this->getIndexModuleDto($areaName);
+                break;
+            case 'hotels':
                 return $this->getIndexModuleDto($areaName);
                 break;
             default:
@@ -42,9 +54,6 @@ class AreaDtoService implements \App\Services\GenericServiceInterface
         $areaDtoService = new \App\Services\Area\AreaDtoService;
         $areaModuleDto = $areaDtoService->getModuleDto($objectType, $objectIdentifier);
 
-        if ($objectType == self::ALIAS) {
-            $objectType = 'index';
-        }
         $viewName = 'default.area.' . $objectType;
         return view($viewName, ['dto' => $areaModuleDto]);
     }

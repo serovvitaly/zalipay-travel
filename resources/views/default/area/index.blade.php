@@ -6,5 +6,7 @@
 @extends('default.layout')
 
 @section('content')
-    <h1>{{ $dto->getTitle() }}</h1>
+    @include('default.breadcrumb')
+    <h1>Египет</h1>
+
 @endsection
