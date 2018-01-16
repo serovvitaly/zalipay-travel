@@ -1,6 +1,6 @@
-@extends('default.layout')
+@extends('default.layout-12')
 
 @section('content')
     @include('default.breadcrumb')
     @yield('content')
-@endsection
+@overwrite

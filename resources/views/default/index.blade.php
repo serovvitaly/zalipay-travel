@@ -1,4 +1,4 @@
-@extends('default.layout')
+@extends('default.layout-9-3')
 
 @section('title', 'Путеводитель по Египту')
 @section('meta_title', 'Путеводитель по Египту')

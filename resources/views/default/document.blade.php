@@ -1,4 +1,4 @@
-@extends('default.layout')
+@extends('default.layout-9-3')
 
 @section('title', $title)
 @section('meta_title', $seo_title)

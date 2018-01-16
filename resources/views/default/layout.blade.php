@@ -17,12 +17,7 @@
             @include('default.nasv-top')
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-9">
-            @yield('content')
-        </div>
-        <div class="col-lg-3"></div>
-    </div>
+    @yield('content')
 </div>
 <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
