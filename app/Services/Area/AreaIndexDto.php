@@ -7,9 +7,13 @@ class AreaIndexDto implements AreaModuleDtoInterface
 {
     protected $title;
 
-    public function __construct(string $title)
+    public function __construct(string $areaName)
     {
-        $this->title = trim($title);
+        if (!in_array($areaName, ['egypt'])) {
+            abort(404);
+        }
+
+        $this->title = trim($areaName);
     }
 
     public function getTitle(): string

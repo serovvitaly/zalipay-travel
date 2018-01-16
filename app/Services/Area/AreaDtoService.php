@@ -32,7 +32,7 @@ class AreaDtoService implements \App\Services\GenericServiceInterface
                 return $this->getIndexModuleDto($areaName);
                 break;
             default:
-                throw new \Exception('Не найден DTO модуля: ' . $moduleName);
+                abort(404);
         }
     }
 

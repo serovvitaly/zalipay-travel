@@ -9,6 +9,10 @@ class GenericDocumentService implements GenericServiceInterface
 
     public function satisfy($objectType, $objectIdentifier)
     {
+        if ($objectType !== 'post') {
+            abort(404);
+        }
+
         $parsedown = new \Parsedown;
 
         $data = \App\Models\Document::findOrFail($objectIdentifier)->toArray();
