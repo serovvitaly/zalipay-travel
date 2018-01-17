@@ -36,11 +36,18 @@ Route::get('sitemap.xml', function () {
  * Строго соблюдать последовательность роутов,
  * ибо роут /{objectId}/{objectType?} будет перекрывать роут /{objectType}{objectId}
  */
-Route::get('/{objectType}{objectId}', 'GenericController@satisfyDocument')
+
+$urlCheckService = new \App\Services\UrlCheckService;
+$urlCheckService->check(Request::path(), function () {
+    Route::get('{url}', 'UrlController@handle')->where(['url' => '.*']);
+});
+
+/*Route::get('/{objectType}{objectId}', 'GenericController@satisfyDocument')
     ->where(['objectType' => '[\w]+', 'objectId' => '[\d]+'])
-    ->name('document');
-Route::get('/{areaAlias}/{contentModule?}', 'GenericController@satisfyArea')
-    ->name('area');
+    ->name('document');*/
+//Route::get('/{areaAlias}/{contentModule?}', 'GenericController@satisfyArea')->name('area');
+
+Route::get('post{postId}', 'PostController@index')->where(['postId' => '\d+']);
 
 Route::get('/', function () {
     return view('default.index', [
