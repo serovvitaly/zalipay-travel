@@ -8,6 +8,10 @@
     <meta name="description" content="@yield('meta_description')">
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+    <!-- template header -->
+    @yield('header')
+    <!-- /template header -->
 </head>
 <body>
 @include('metrika')
