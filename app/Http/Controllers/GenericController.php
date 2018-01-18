@@ -2,29 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Url;
 use App\Services\Area\AreaDtoService;
+use App\Services\UrlHandlerInterface;
 
-class GenericController extends Controller
+class GenericController extends Controller implements UrlHandlerInterface
 {
     /**
-     * @param $objectType
-     * @param $objectId
-     * @return mixed
+     * @param Url $urlModel
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function satisfyDocument(string $objectType, int $objectId)
+    public function get(Url $urlModel)
     {
-        return (new \App\Services\GenericDocumentService)->satisfy($objectType, $objectId);
-    }
-
-    /**
-     * @param $areaAlias
-     * @param string $contentModule
-     * @return mixed
-     * @throws \Exception
-     */
-    public function satisfyArea(string $areaAlias, string $contentModule = AreaDtoService::ALIAS)
-    {
-        return (new \App\Services\Area\AreaDtoService)->satisfy($contentModule, $areaAlias);
+        $slugs = explode('/', $urlModel->url);
+        $areaAlias = $slugs[0];
+        $contentModule = isset($slugs[1]) ? $slugs[1] : AreaDtoService::ALIAS;
+        return (new AreaDtoService)->satisfy($contentModule, $areaAlias);
     }
 }
