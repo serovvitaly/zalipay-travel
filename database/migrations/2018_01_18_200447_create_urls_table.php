@@ -19,6 +19,7 @@ class CreateUrlsTable extends Migration
             $table->string('title');
             $table->string('meta_title');
             $table->string('meta_description');
+            $table->string('handler');
             $table->integer('http_code');
             $table->dateTime('audited_at');
         });

@@ -13,6 +13,6 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/sitemap">Карта сайта</a>
+        <a class="nav-link" href="/blog">Блог</a>
     </li>
 </ul>
