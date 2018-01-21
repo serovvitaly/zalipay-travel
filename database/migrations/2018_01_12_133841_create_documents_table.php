@@ -16,13 +16,14 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id');
+            $table->string('uri');
+            $table->string('type', 10);
             $table->string('title');
             $table->string('description');
             $table->text('content');
-            $table->string('seo_title');
-            $table->string('seo_description');
             $table->boolean('is_active');
             $table->timestamps();
+            $table->unique(['uri', 'type']);
         });
     }
 
