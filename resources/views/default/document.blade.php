@@ -1,13 +1,13 @@
 @extends('default.layout-9-3')
 
 @section('title', $title)
-@section('meta_title', $seo_title)
-@section('meta_description', $seo_description)
+@section('meta_title', $metaTitle)
+@section('meta_description', $metaDescription)
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1>{{ $title }}</h1>
+            <h1>{{ $h1 }}</h1>
             <article>
                 {!! $content !!}
             </article>

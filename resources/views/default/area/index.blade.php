@@ -5,12 +5,12 @@
 ?>
 @extends('default.area.layout')
 
-@section('header')
+@section('head')
 <style>
     .text-image {
         color: #3596df;
         background: url(http://bipbap.ru/wp-content/uploads/2017/10/0_a9e8f_beecb6d9_XL.jpg) no-repeat;
-        background-position: 10% 20%;
+        background-position: 70% 20%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -18,6 +18,7 @@
         font-size: 9rem;
         text-align: center;
         font-weight: bold;
+        font-family: 'Rubik', sans-serif;
     }
     body {
         background: #d7e3d9;

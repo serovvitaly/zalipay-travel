@@ -13,5 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Url extends Model
 {
-
+    public static function findByUri(string $uri)
+    {
+        return self::where('url', trim($uri))->first();
+    }
 }

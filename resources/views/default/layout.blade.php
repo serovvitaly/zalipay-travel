@@ -8,9 +8,10 @@
     <meta name="description" content="@yield('meta_description')">
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Rubik:900">
 
     <!-- template header -->
-    @yield('header')
+    @yield('head')
     <!-- /template header -->
 </head>
 <body>

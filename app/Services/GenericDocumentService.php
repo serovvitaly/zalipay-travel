@@ -15,9 +15,15 @@ class GenericDocumentService implements GenericServiceInterface
 
         $parsedown = new \Parsedown;
 
-        $data = \App\Models\Document::findOrFail($objectIdentifier)->toArray();
-        $data['content'] = $parsedown->text($data['content']);
-        $content = view('default.document', $data);
+        $document = \App\Models\Document::findOrFail($objectIdentifier);
+        $url = \App\Models\Url::findByUri('post'. $objectIdentifier);
+        $content = view('default.document', [
+            'h1' => $document->title,
+            'title' => $url->title,
+            'metaTitle' => $url->meta_title,
+            'metaDescription' => $url->meta_description,
+            'content' => $parsedown->text($document->content),
+        ]);
         $memKey = '/' . $objectType . $objectIdentifier;
         (new \Memcached())->add($memKey, (string)$content);
         header('Content-Source: origin');

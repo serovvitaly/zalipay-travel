@@ -7,6 +7,8 @@
 
 <h4>Описание погоды по месяцам</h4>
 
+{!! $widgetAreaMonthsGrid !!}
+
     <div class="row">
         <div class="col-lg-3">
             <h5>Зима</h5>
