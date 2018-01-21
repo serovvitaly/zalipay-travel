@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('post1', function () {
+    return redirect('/egypt/weather/jul');
+});
+
 $urlService = new \App\Services\UrlService;
 $urlService->check(Request::path(), function (\App\Models\Url $urlModel) {
     Route::get('{slugs}', function ($slugs = '/') use ($urlModel) {
