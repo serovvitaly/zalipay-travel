@@ -54,7 +54,18 @@ class AreaDtoService implements \App\Services\GenericServiceInterface
         $areaDtoService = new \App\Services\Area\AreaDtoService;
         $areaModuleDto = $areaDtoService->getModuleDto($objectType, $objectIdentifier);
 
+        if ($objectType === self::ALIAS) {
+            $urlModel = \App\Models\Url::findByUri($objectIdentifier);
+        } else {
+            $urlModel = \App\Models\Url::findByUri($objectIdentifier . '/' . $objectType);
+        }
+
         $viewName = 'default.area.' . $objectType;
-        return view($viewName, ['dto' => $areaModuleDto]);
+        return view($viewName, [
+            'title' => $urlModel->title,
+            'metaTitle' => $urlModel->meta_title,
+            'metaDescription' => $urlModel->meta_description,
+            'dto' => $areaModuleDto
+        ]);
     }
 }

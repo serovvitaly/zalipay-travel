@@ -20,6 +20,9 @@ class AreaWeatherController extends Controller implements UrlHandlerInterface
         $slugs = explode('/', $urlModel->url);
         $widgetAreaMonthsGrid = new AreaMonthsGridWidget($slugs[0]);
         return view('default.area.weather', [
+            'title' => $urlModel->title,
+            'metaTitle' => $urlModel->meta_title,
+            'metaDescription' => $urlModel->meta_description,
             'widgetAreaMonthsGrid' => $widgetAreaMonthsGrid->render()
         ]);
     }
