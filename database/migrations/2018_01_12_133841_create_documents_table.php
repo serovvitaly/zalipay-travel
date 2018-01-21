@@ -21,7 +21,6 @@ class CreateDocumentsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->text('content');
-            $table->boolean('is_active');
             $table->timestamps();
             $table->unique(['uri', 'type']);
         });

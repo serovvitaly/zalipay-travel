@@ -10,7 +10,9 @@ class IndexController extends Controller implements UrlHandlerInterface
     public function get(Url $urlModel)
     {
         return view('default.index', [
-            'items' => \App\Models\Document::where('is_active', 1)->paginate(10),
+            'title' => $urlModel->title,
+            'metaTitle' => $urlModel->meta_title,
+            'metaDescription' => $urlModel->meta_description,
         ]);
     }
 }
